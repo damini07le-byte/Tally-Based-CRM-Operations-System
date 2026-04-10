@@ -11,7 +11,7 @@ import {
   MessageSquare,
   Sparkles,
   TrendingUp,
-  RotateForward,
+  RotateCw,
   ChevronRight,
   MoreVertical,
   Activity,
@@ -73,7 +73,7 @@ const ProductivityBriefing = () => {
     }, [tasks]);
 
     return (
-        <div className="p-8 space-y-10 animate-fade-in bg-slate-50/30 min-h-screen">
+        <div className="p-4 md:p-8 space-y-10 animate-fade-in bg-slate-50/30 min-h-screen">
             
             {/* Header: AI Morning Pulse */}
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
@@ -161,7 +161,7 @@ const ProductivityBriefing = () => {
                         </div>
 
                         {mode === 'DayEnd' ? (
-                            <div className="premium-card overflow-hidden bg-white">
+                            <div className="premium-card overflow-x-auto bg-white">
                                 <table className="w-full text-left">
                                     <thead className="bg-slate-50">
                                         <tr>
@@ -302,7 +302,7 @@ const ProductivityBriefing = () => {
                     <div className="premium-card p-8 bg-indigo-50 border-indigo-100 space-y-8">
                         <div>
                             <div className="flex items-center gap-2 mb-2">
-                                <RotateForward className="w-4 h-4 text-indigo-600" />
+                                <RotateCw className="w-4 h-4 text-indigo-600" />
                                 <h3 className="font-black text-slate-800 uppercase tracking-widest text-[10px]">Carry-Forward Engine</h3>
                             </div>
                             <p className="text-xs text-slate-500 leading-relaxed font-medium">

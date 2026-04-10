@@ -60,7 +60,7 @@ const GSTRCompliance = () => {
   }, [auditStats]);
 
   return (
-    <div className="p-8 space-y-8 animate-fade-in max-w-[1600px] mx-auto">
+    <div className="p-4 md:p-8 space-y-8 animate-fade-in max-w-[1600px] mx-auto">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>

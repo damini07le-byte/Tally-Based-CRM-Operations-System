@@ -1,9 +1,10 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -16,6 +17,11 @@ let tallyDataStore = {
   inventory: [],
   exceptions: [],
   tasks: [], // New AI Generated Tasks
+  stats: {
+    totalRevenue: "₹0",
+    totalOutstanding: "₹0",
+    pendingInvoices: 0
+  },
   lastUpdated: null
 };
 
@@ -58,6 +64,11 @@ app.post('/api/tally/sync', (req, res) => {
         dispatch: allRecords.filter(r => r.record_type === 'Sales Order' || r.record_type === 'Dispatch' || r.record_type === 'Invoice'),
         inventory: allRecords.filter(r => r.record_type === 'Stock' || r.record_type === 'Inventory'),
         exceptions: allRecords.filter(r => r.record_type === 'Exception' || r.record_type === 'Audit Flag'),
+        stats: {
+          totalRevenue: `₹${allRecords.filter(r => r.record_type === 'Sales Order' || r.record_type === 'Invoice').reduce((acc, curr) => acc + parseFloat(curr.amount || 0), 0).toLocaleString()}`,
+          totalOutstanding: `₹${allRecords.filter(r => r.record_type === 'Receivable' || r.record_type === 'Customer Outstanding').reduce((acc, curr) => acc + parseFloat(curr.amount || 0), 0).toLocaleString()}`,
+          pendingInvoices: allRecords.filter(r => r.record_type === 'Receivable' || r.record_type === 'Customer Outstanding').length
+        },
         lastUpdated: new Date().toISOString()
       };
 
@@ -87,6 +98,16 @@ app.post('/api/tasks/create', (req, res) => {
 // Endpoint for UI to fetch data
 app.get('/api/dashboard/stats', (req, res) => {
   res.json(tallyDataStore);
+});
+
+// Serve static files in production
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Route all other requests to index.html for React Router
+app.get('*', (req, res) => {
+  if (!req.url.startsWith('/api')) {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  }
 });
 
 app.listen(PORT, () => {

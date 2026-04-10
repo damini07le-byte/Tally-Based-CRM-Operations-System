@@ -103,7 +103,7 @@ const AccountsCRM = () => {
   };
 
   return (
-    <div className="p-8 space-y-8 max-w-[1600px] mx-auto animate-fade-in">
+    <div className="p-4 md:p-8 space-y-8 max-w-[1600px] mx-auto animate-fade-in">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>

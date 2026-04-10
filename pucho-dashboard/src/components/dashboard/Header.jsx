@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom"; // Import useLocation
 import MenuIcon from '../../assets/icons/menu.svg';
 import BellIcon from '../../assets/icons/bell.png';
-import PuchoLogo from '../../assets/icons/chat_icon_final.png';
+import PuchoLogo from '../../assets/pucho_logo_latest.png';
 
 const Header = ({ onMenuClick }) => {
     const location = useLocation();
@@ -49,7 +49,7 @@ const Header = ({ onMenuClick }) => {
             {/* Actions (Right) */}
             <div className="flex items-center gap-4">
                 {/* Mobile: Logo Only */}
-                <img src={PuchoLogo} alt="Pucho Logo" className="w-10 h-10 object-contain md:hidden" />
+                <img src={PuchoLogo} alt="Pucho Logo" className="h-7 w-auto md:hidden" />
 
                 {/* Desktop: Text Only */}
                 <span className="hidden md:block text-sm font-semibold text-[#111935] text-right">Pucho Tally Dashboard</span>

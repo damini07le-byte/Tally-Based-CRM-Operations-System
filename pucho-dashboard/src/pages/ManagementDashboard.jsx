@@ -70,9 +70,9 @@ const ManagementDashboard = () => {
         if (result) {
             setLiveData(result);
             setDashboardStats({
-                receivables: result.stats.totalOutstanding,
+                receivables: result.stats?.totalOutstanding || '₹0.00',
                 dispatch: '98.5%',
-                collections: result.stats.totalRevenue,
+                collections: result.stats?.totalRevenue || '₹0.00',
                 compliance: '100%'
             });
         }
@@ -86,7 +86,7 @@ const ManagementDashboard = () => {
     }, []);
 
   return (
-    <div className="p-8 space-y-8 max-w-[1700px] mx-auto min-h-screen animate-fade-in bg-slate-50/50">
+    <div className="p-4 md:p-8 space-y-8 max-w-[1700px] mx-auto min-h-screen animate-fade-in bg-slate-50/50">
       
       {/* Universal Search & Live Pulse */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center bg-white p-4 lg:p-6 rounded-3xl border border-slate-100 px-6 lg:px-8 shadow-sm gap-6">

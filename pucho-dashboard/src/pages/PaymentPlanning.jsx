@@ -53,8 +53,8 @@ const PaymentPlanning = () => {
   }, [filteredPayments]);
 
   return (
-    <div className="p-8 space-y-8 animate-fade-in">
-       <div className="flex justify-between items-end">
+    <div className="p-4 md:p-8 space-y-8 animate-fade-in">
+       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
           <h1 className="text-3xl font-black text-slate-900 tracking-tight">Payment Planning</h1>
           <p className="text-slate-500 font-medium">Daily Outflow Proposal & Approval (UC-9)</p>
@@ -83,8 +83,8 @@ const PaymentPlanning = () => {
                 </button>
               ))}
            </div>
-           <button onClick={loadData} className="btn-glass flex items-center gap-2 shadow-sm border-slate-200">
-              <RefreshCcw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} /> Sync Vendors
+           <button onClick={loadData} className="btn-glass flex items-center gap-2 shadow-sm border-slate-200 justify-center">
+              <RefreshCcw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} /> Sync
            </button>
         </div>
       </div>

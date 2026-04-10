@@ -27,7 +27,7 @@ const AdminDashboard = () => {
             <Sidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
             {/* Main Content Wrapper */}
-            <div className="flex-1 flex flex-col ml-0 lg:ml-[240px] overflow-hidden relative transition-all duration-300 pt-[3px] lg:pt-0">
+            <div className="flex-1 flex flex-col ml-0 lg:ml-[260px] overflow-hidden relative transition-all duration-300 pt-[3px] lg:pt-0">
                 {/* Header: Sticky Top */}
                 <Header onMenuClick={() => setIsMobileOpen(true)} />
 
